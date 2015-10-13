@@ -2,46 +2,29 @@ angular
 .module('app')
 .controller('dashboard',['$window','$scope','$location','chartServices',function($window,$scope,$location,chartServices){
 
-
-	// for line chart
-    /*
-	var $minVal = 1000;
-	Highcharts.setOptions({
-		lang: {
-			numericSymbols: null 
-		}
-	});
+    $scope.startDate = '2015-09-30';
+    $scope.interval = 10;
+    $scope.pemdaItems;
+    $scope.idProv;
 
 
+
+    // chartServices.getProv().then(function(topicDatas){
+        
+        // 
+    // });
+    // var $topicdatas = chartServices.getProv();
+    // console.log("topicdatas : ",$topicdatas);
+    $scope.provItems = chartServices.getProv();
+
+    // 
     
 
-    $catLinechart = ["2014-05-06","2014-05-07","2014-05-08","2014-05-09","2014-05-10"];
-	$dataLineChart = [{
-		name : "C++",
-		data : [10.20,5.20,40.2,80,10]
-	},
-	{
-		name : "Node JS",
-		data : [15,3,40.2,80,90]
-	},{
-		name : "PHP",
-		data : [15,3,40.2,90,120]
-	}];
-	$scope.lineconfig.xAxis.categories = $catLinechart;
-	$scope.lineconfig.series = $dataLineChart;
-	$scope.lineconfig.yAxis = {
-		min: 0,
-		tickInterval: 50,
-		lineWidth: 1,
-		title: {
-			text: ''
+    $scope.$watchGroup(['pemdaItems'], function(newVal) {
+        // 
+    });
 
-		}
-	};
-    */
-
-
-    chartServices.getLine().success(function(sentimentDatas) {
+    chartServices.getLine($scope.startDate,$scope.interval).success(function(sentimentDatas) {
         var $minVal = 1000;
         Highcharts.setOptions({
         	lang: {
@@ -64,6 +47,26 @@ angular
         	}
         };
         $scope.newsConfig.loading = false;
+    });
+
+    angular.element("#provinsiOpt").on("change",function(e){
+        var $idProv = angular.element(this).val();
+        // console.log("$idProv : ",$idProv);
+        $scope.$apply(function() {
+            // $scope.pemdaItems = $idTopic;
+            $scope.pemdaItems = chartServices.getPemda();
+        });
+
+    });
+
+    angular.element("#buttonsubmit").on("click",function(){
+        var $pemdaopt = angular.element("#pemdaOpt");
+        var $provopt = angular.element("#provinsiOpt");
+
+        console.log("$pemdaopt : ",$pemdaopt.val());
+        console.log("$provopt : ",$provopt.val());
+
+
     });
     
     $scope.newsConfig = {
@@ -90,6 +93,6 @@ angular
         loading: true
     };
 
-    console.log($scope.newsConfig);
+    // $(".chosen-select").chosen({disable_search_threshold: 10});
 	
 }]); 
