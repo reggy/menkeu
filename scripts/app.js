@@ -10,8 +10,8 @@ angular
 	$stateProvider
 	.state('dashboard',{
 		url : '/dashboard'
-		// ,templateUrl : 'templates/angulartemplate/dashboard.html'
-		,template : '<h1>ini dashboard </h1>'
+		,templateUrl : 'templates/angulartemplate/dashboard.html'
+		// ,template : '<h1>ini dashboard </h1>'
 		,controller : "dashboard"
 	});
 
