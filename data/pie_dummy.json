@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name": "C++",
+        "total": 30,
+        "percentage": 20.1
+    },
+    {
+        "id": 2,
+        "name": "Node JS",
+        "total": 60,
+        "percentage": 40.1
+    }
+]
