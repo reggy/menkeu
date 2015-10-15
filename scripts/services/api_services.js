@@ -2,7 +2,19 @@ var app = angular.module('app');
 
 var $api_url = "http://localhost/kemenkeu/data/";
 
-app.factory('apiServices', function($http) {
+
+// for caching
+// cache geojson
+/*
+app.factory('superCache', ['$cacheFactory', function($cacheFactory) {
+    return $cacheFactory('geoJSON');
+}]);
+*/
+app.factory('superCache',function($cacheFactory){
+	return $cacheFactory('geoJSON');
+});
+
+app.factory('apiServices', function($cacheFactory,$http) {
 	return {
 		jenisPangan: function() {
 			// dd_jenis_pangan.json
@@ -26,6 +38,15 @@ app.factory('apiServices', function($http) {
 
 		,barchart : function(){
 			var url = $api_url + 'barchart.json';
+            return $http.get(url);
+		}
+
+		,getGeo : function(){
+			var url = $api_url + 'indonesia.json';
+            return $http.get(url);
+		}
+		,getMapBuzz : function(){
+			var url = $api_url + 'homeissue.json';
             return $http.get(url);
 		}
 	};
