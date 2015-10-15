@@ -1,6 +1,7 @@
 angular
 .module('app',[
 	'ui.router',
+	'app.directives.navDirectives',
 	'highcharts-ng'
 ])
 .config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider,$stateProvider){
@@ -8,29 +9,26 @@ angular
 	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
-	.state('dashboard',{
-		url : '/dashboard'
-		,templateUrl : 'templates/angulartemplate/dashboard.html'
-		// ,template : '<h1>ini dashboard </h1>'
-		,controller : "dashboard"
+	.state('pangan',{
+		url : '/pangan'
+		,templateUrl : 'templates/angulartemplate/pangan.html'
+		,controller : "pangan"
 	});
 
 
 	$stateProvider
-	.state('pie',{
-		url : '/pie'
-		// ,templateUrl : 'templates/angulartemplate/dashboard.html'
-		,template: "<h1> ini Pie</h1>"
-		,controller : "dashboard"
+	.state('peta',{
+		url : '/peta'
+		,templateUrl: 'templates/angulartemplate/peta.html'
+		,controller : "peta"
 	});
 
 
 	$stateProvider
-	.state('bar',{
-		url : '/bar'
-		// ,templateUrl : 'templates/angulartemplate/dashboard.html'
-		,template: "<h1> ini Bar</h1>"
-		,controller : "dashboard"
+	.state('tblgrid',{
+		url : '/tblgrid'
+		,templateUrl: 'templates/angulartemplate/grid.html'
+		,controller : "grid"
 	});
 
 }]);

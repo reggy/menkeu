@@ -1,38 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Dashboard with angular</title>
-	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="bower_components/chosen/chosen.min.css">
-	<link rel="stylesheet" type="text/css" href="styles/main.css">
+    <title>Dashboard angular</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Date range picker -->
+    <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
+	<!-- Theme style -->
+    <link rel="stylesheet" href="styles/AdminLTE.css">
+	<link rel="stylesheet" href="styles/skins/_all-skins.min.css">
+
 </head>
-<body>
-	<div class="container" ng-app="app">
-		<header ng-include="'templates/angulartemplate/navigation.html'"></header>
-		<div ui-view></div>
-	</div>
+<body class="hold-transition skin-blue sidebar-mini">
+
+	<div class="wrapper">
+		<header class="main-header">
+			<!-- Logo -->
+	        <a href="#" class="logo">
+	          <!-- mini logo untuk sidebar slide 50x50 pixels -->
+	          <span class="logo-mini"><b>K</b>U</span>
+	          <!-- logo untuk regular webiste dan mobile devices -->
+	          <span class="logo-lg"><b>KEMENKEU</b></span>
+	        </a>
+
+
+	        <nav class="navbar navbar-static-top" role="navigation">
+	          <!-- Sidebar toggle button-->
+	          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+	            <span class="sr-only">List Menu</span>
+	          </a>
+
+	        </nav>
+		</header>
+
+		<aside class="main-sidebar">
+			<section class="sidebar">
+				<div class="user-panel">
+					<div class="pull-left image">
+						<!-- <img alt="User Image" class="img-circle" src="images/pp.jpg"> -->
+					</div>
+					<div class="pull-left info">
+						<p>Kemenkeu</p>
+						<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+					</div>
+				</div>
+
+				<ul class="sidebar-menu" ng-controller="navigasi">
+					<li class="treeview" ng-repeat="menuitem in menuitems">
+						<a style="cursor:pointer;"><i class="fa {{menuitem.parentIcon}}"></i>
+							<span>{{menuitem.parent}}</span><i class="fa fa-angle-left pull-right"></i>
+						</a>
+						<ul data-nav-directives data="menuitem.child" class="treeview-menu"></ul>
+					</li>
+				</ul>
+			</section>
+		</aside>
+
+		<div class="content-wrapper" >
+			<div ui-view></div>
+		</div>
+
+
+	</div> <!-- End of wrapper class html -->
 
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/angular/angular.min.js"></script>
-	<script src="bower_components/chosen/chosen.jquery.min.js"></script>
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-
-	
-
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="http://code.highcharts.com/highcharts.src.js"></script>
+    <script src="bower_components/highcharts-ng/dist/highcharts-ng.min.js"></script>
 
+    <!-- Library -->
+    <script src="scripts/lib/moment.min.js"></script>
+    <script src="bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- AdminLTE App -->
+    <script src="scripts/lib/app.min.js"></script>
+    
 	
 
 	<script src="scripts/app.js"></script>
-	<script src="scripts/controllers/dashboard.js"></script>
-	<script src="scripts/services/myServices.js"></script>
-	
-	<!-- Plugin -->
-    <!-- // <script src="http://code.highcharts.com/stock/highstock.js"></script> -->
-    <script src="http://code.highcharts.com/highcharts.src.js"></script>
-    <script src="bower_components/highcharts-ng/dist/highcharts-ng.min.js"></script>
+
+	<!-- Angular Controller -->
+	<script src="scripts/controllers/navigasi.js"></script>
+	<script src="scripts/controllers/pangan.js"></script>
+	<script src="scripts/controllers/peta.js"></script>
+	<script src="scripts/controllers/grid.js"></script>
+
+
+	<!-- Angular Services -->
+    <script src="scripts/services/navigasi_services.js"></script>
+    <script src="scripts/services/api_services.js"></script>
+
+    <!-- Angular Directive -->
+    <script src="scripts/directives/navigasi_directives.js"></script>
 
 </body>
 </html>

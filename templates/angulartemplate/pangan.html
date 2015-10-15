@@ -1,0 +1,109 @@
+
+<section class="content-header">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <select class="form-control select2" id="provOpt" style="width: 100%;float:left;">
+          <option selected="selected" value="0">Pilih Provinsi</option>
+          <option ng-repeat="provItem in provItems" value="{{provItem.id}}">{{provItem.label}}</option>
+        </select>
+      </div>
+    </div> 
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <select class="form-control select2" id="panganOpt" style="width: 100%;float:left;">
+          <option selected="selected" value="0">Pilih Pangan</option>
+          <!-- <span ng-repeat="panganItem in panganItems"></span> -->
+          <option ng-repeat="panganItem in panganItems" value="{{panganItem.id}}">{{panganItem.label}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">
+            <i class="fa fa-calendar"></i>
+          </div>
+          <input type="text" class="form-control pull-right" id="reservation">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <button class="btn btn-block btn-info" type="button" ng-click="updateChart()">Update</button>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+
+
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-warning">
+        <div class="box-header with-border">
+          <h3 class="box-title">Chart 1</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" id="sentiment_news">
+          <highchart config="chart1" class="span9" ></highchart>
+        </div>
+
+      </div>
+
+
+      <div class="box box-danger">
+        <div class="box-header with-border">
+          <h3 class="box-title">Chart 2</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" id="sentiment_media">
+          <highchart config="chart2" class="span9" ></highchart>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-6">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Chart 3</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+          <highchart config="chart3" class="span9" ></highchart>
+        </div>
+      </div>
+
+
+      <div class="box box-success">
+        <div class="box-header with-border">
+          <h3 class="box-title">Chart 4</h3>
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="box-body" id="sentiment_percakapan">
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
