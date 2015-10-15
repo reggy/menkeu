@@ -49,5 +49,9 @@ app.factory('apiServices', function($cacheFactory,$http) {
 			var url = $api_url + 'homeissue.json';
             return $http.get(url);
 		}
+		,getMapBuzzByProvId : function($startDate,$endDate,$idProv){
+            var url = $api_url + 'detailissue.json';
+            return $http.get(url);
+        }
 	};
 });

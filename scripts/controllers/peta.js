@@ -4,12 +4,13 @@ angular
     
 	var cache = superCache.get('geoJSON');
 	var $theSubunits = {};
+	
+	// cache api topojson
 	if (cache) {
 		$theSubunits = cache;
 		$scope.subunits = topojson.feature($theSubunits, $theSubunits.objects.PROVINSI_ADMINISTRATIVE_AREA);
 	}else{
 			// superCache.remove('another key');
-
 		apiServices.getGeo().success(function(resGeoJson) {
 			var asdf = superCache.put('geoJSON', resGeoJson);
 			$theSubunits = superCache.get('geoJSON');
@@ -79,8 +80,8 @@ angular
 	            }
 	            var eleCheck = $(".mapsMiddle");
 
-	            var scale = 1000;
-	            var centerMap = [2.4, 17.4];
+	            var scale = 700;
+	            var centerMap = [14.4, 17.4];
 
 
 	            var that = this;
@@ -192,7 +193,24 @@ angular
 	        	var nameProv = d.properties.nm_provinsi;
 	        	var idprov = d.properties.id_provinsi;
 
-	        	alert("chart di klik !");
+	        	// alert("chart di klik !");
+
+	        	apiServices.getMapBuzzByProvId().success(function(jsonListTbl) {
+        			var $html = "";
+        			var $header = "<tr><th>Issue</th><th>Count</th></tr>";
+        			var $container = $("#listissuemaps");
+        			var $datas = jsonListTbl.data;
+        			if($datas.length > 0){
+						var prcnt = 0;
+						for(var i = 0; i < $datas.length; i++){
+							$html += "<tr>";
+							$html += "<td>"+$datas[i].label+"</td>";
+							$html += "<td>"+$datas[i].count+"</td>";
+							$html += "</tr>";
+						}
+					}
+					$container.html($html);
+        		});
         		// getMapBuzzByProvId
 
 			} // end of hoverMaps func
